@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -12,6 +12,7 @@ const config: Config = {
         'dark-border': '#344861',
         'light-border': '#bfc6d4',
         'non-editable-cell': '#344861',
+        'dark-non-editable-cell': '#2F60C9',
         'editable-cell': '#365db0',
         'selected-cell': '#bbdefb'
       },
@@ -23,5 +24,5 @@ const config: Config = {
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

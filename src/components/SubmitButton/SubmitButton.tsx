@@ -24,7 +24,7 @@ const SubmitButton = () => {
   };
 
   return (
-  <button onClick={handleSubmit}>
+  <button onClick={handleSubmit} className='text-white bg-editable-cell rounded py-2 mt-2 hover:bg-dark-non-editable-cell transition-all duration-300 border-0'>
     Submit
   </button>
   );
