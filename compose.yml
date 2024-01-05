@@ -1,0 +1,8 @@
+services:
+  web:
+    build:
+      context: /www/sudoku
+      dockerfile: Dockerfile
+    ports:
+      - "3005:3005"
+    image: result/latest

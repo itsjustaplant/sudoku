@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'dark-border': '#344861',
+        'light-border': '#bfc6d4',
+        'non-editable-cell': '#344861',
+        'editable-cell': '#365db0',
+        'selected-cell': '#bbdefb'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
