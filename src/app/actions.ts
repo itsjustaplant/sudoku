@@ -1,4 +1,4 @@
-"use server"
+'use server';
 
 interface SubmitPayloadType {
   timer: number,
@@ -6,6 +6,6 @@ interface SubmitPayloadType {
 }
 
 export async function submit(payload: SubmitPayloadType) {
-	const { timer, isWin } = payload
-	console.log({timer, isWin}) // temp logging
+  const { timer, isWin } = payload;
+  console.log({ timer, isWin }); // temp logging
 }

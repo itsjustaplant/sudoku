@@ -1,5 +1,5 @@
-import { create } from 'zustand'
-import {Sudoku, GAME_STATUS} from '@/game/Sudoku';
+import { create } from 'zustand';
+import { Sudoku, GAME_STATUS } from '@/game/Sudoku';
 
 type GameStore = {
     board: any,
@@ -17,37 +17,45 @@ type GameStore = {
     setTimer: (t: number) => void
 }
 
-export const useGameStore = create<GameStore>((set, get) => ({
-	board:  [...Array(9)].map(e => Array(9).fill(' ')),
-	timer: 0,
-	selectedRow: 0,
-	selectedColumn: 0,
-	isEditable: false,
-	isGameOn: false,
-	answer: [...Array(9)].map(e => Array(9).fill(' ')),
-	gameStatus: GAME_STATUS.INITIALIZED,
-	initBoard: () => {
-		const Game = new Sudoku();
-		const tempBoard = Game?.mat?.map(row => {
-			return row.map(v => ({ value: v, isEditable: v === 0}))
-		})
-		set(() => ({board: tempBoard, answer: Game?.answer, isEditable: !Game.mat[0][0], isGameOn: false, gameStatus: GAME_STATUS.INITIALIZED}))
-	},
-	setSelectedCell: (r: number, c: number, f: boolean) => {
-		set(() => ({selectedRow: r, selectedColumn: c, isEditable: f}))
-	},
-	setCellValue: (v: number) => {
-		const { board, selectedRow, selectedColumn, isEditable } = get();
-		if (isEditable) {
-			const tempBoard = structuredClone(board);
-			tempBoard[selectedRow][selectedColumn].value = v;
-			set(() => ({board: tempBoard, isGameOn: true}))
-		}
-	},
-	setGameStatus: (newStatus: GAME_STATUS) => {
-		set(() => ({gameStatus: newStatus, isGameOn: false}))
-	},
-	setTimer: (t: number) => {
-		set(() => ({timer: t}))
-	}
+const useGameStore = create<GameStore>((set, get) => ({
+  board: [...Array(9)].map((e) => Array(9).fill(' ')),
+  timer: 0,
+  selectedRow: 0,
+  selectedColumn: 0,
+  isEditable: false,
+  isGameOn: false,
+  answer: [...Array(9)].map((e) => Array(9).fill(' ')),
+  gameStatus: GAME_STATUS.INITIALIZED,
+  initBoard: () => {
+    const Game = new Sudoku();
+    const tempBoard = Game?.mat?.map((row) => row.map((v) => ({ value: v, isEditable: v === 0 })));
+    set(() => ({
+      board: tempBoard,
+      answer: Game?.answer,
+      isEditable: !Game.mat[0][0],
+      isGameOn: false,
+      gameStatus: GAME_STATUS.INITIALIZED
+    }));
+  },
+  setSelectedCell: (r: number, c: number, f: boolean) => {
+    set(() => ({ selectedRow: r, selectedColumn: c, isEditable: f }));
+  },
+  setCellValue: (v: number) => {
+    const {
+      board, selectedRow, selectedColumn, isEditable
+    } = get();
+    if (isEditable) {
+      const tempBoard = structuredClone(board);
+      tempBoard[selectedRow][selectedColumn].value = v;
+      set(() => ({ board: tempBoard, isGameOn: true }));
+    }
+  },
+  setGameStatus: (newStatus: GAME_STATUS) => {
+    set(() => ({ gameStatus: newStatus, isGameOn: false }));
+  },
+  setTimer: (t: number) => {
+    set(() => ({ timer: t }));
+  }
 }));
+
+export default useGameStore;

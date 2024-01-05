@@ -4,8 +4,8 @@ import Timer from './Timer/Timer';
 import SubmitButton from './SubmitButton/SubmitButton';
 
 export {
-	Board,
-	Keyboard,
-	Timer,
-	SubmitButton
-}
+  Board,
+  Keyboard,
+  Timer,
+  SubmitButton
+};

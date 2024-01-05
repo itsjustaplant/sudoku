@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
 enum GAME_STATUS {
     INITIALIZED,
     WIN,
@@ -6,173 +8,174 @@ enum GAME_STATUS {
 
 // JS program to implement the approach
 class Sudoku {
-	N: number;
-	K: number;
-	SRN: number;
-	mat: number[][];
-	answer: number[][]; // unique solution
- 
-	// Constructor
-	constructor() {
-		this.N = 9;
-		this.K = 1;
-		this.SRN = 3;
+  N: number;
 
-		// Initialize all entries as false to indicate
-		// that there are no edges initially
-		this.mat = Array.from({
-			length: this.N
-		}, () => Array.from({
-			length: this.N
-		}, () => 0));
-		this.answer = Array.from({
-			length: this.N
-		}, () => Array.from({
-			length: this.N
-		}, () => 0));;
+  K: number;
 
-		this.fillValues();
-	}
+  SRN: number;
 
-	// Sudoku Generator
-	fillValues() {
-		// Fill the diagonal of SRN x SRN matrices
-		this.fillDiagonal();
+  mat: number[][];
 
-		// Fill remaining blocks
-		this.fillRemaining(0, this.SRN);
+  answer: number[][]; // unique solution
 
-		// Remove Randomly K digits to make game
-		this.removeKDigits();
-	}
+  // Constructor
+  constructor() {
+    this.N = 9;
+    this.K = 1;
+    this.SRN = 3;
 
-	// Fill the diagonal SRN number of SRN x SRN matrices
-	fillDiagonal() {
-		for (let i = 0; i < this.N; i += this.SRN) {
-			// for diagonal box, start coordinates->i==j
-			this.fillBox(i, i);
-		}
-	}
+    // Initialize all entries as false to indicate
+    // that there are no edges initially
+    this.mat = Array.from({
+      length: this.N
+    }, () => Array.from({
+      length: this.N
+    }, () => 0));
+    this.answer = Array.from({
+      length: this.N
+    }, () => Array.from({
+      length: this.N
+    }, () => 0));
 
-	// Returns false if given 3 x 3 block contains num.
-	unUsedInBox(rowStart: number, colStart: number, num: number) {
-		for (let i = 0; i < this.SRN; i++) {
-			for (let j = 0; j < this.SRN; j++) {
-				if (this.mat[rowStart + i][colStart + j] === num) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
+    this.fillValues();
+  }
 
-	// Fill a 3 x 3 matrix.
-	fillBox(row: number, col: number) {
-		let num = 0;
-		for (let i = 0; i < this.SRN; i++) {
-			for (let j = 0; j < this.SRN; j++) {
-				while (true) {
-					num = this.randomGenerator(this.N);
-					if (this.unUsedInBox(row, col, num)) {
-						break;
-					}
-				}
-				this.mat[row + i][col + j] = num;
-				this.answer[row + i][col + j] = num;
-			}
-		}
-	}
+  // Sudoku Generator
+  fillValues() {
+    // Fill the diagonal of SRN x SRN matrices
+    this.fillDiagonal();
 
-	// Random generator
-	randomGenerator(num: number) {
-		return Math.floor(Math.random() * num + 1);
-	}
+    // Fill remaining blocks
+    this.fillRemaining(0, this.SRN);
 
-	// Check if safe to put in cell
-	checkIfSafe(i: number, j: number, num: number) {
-		return (
-			this.unUsedInRow(i, num) &&
-          this.unUsedInCol(j, num) &&
-          this.unUsedInBox(i - (i % this.SRN), j - (j % this.SRN), num)
-		);
-	}
+    // Remove Randomly K digits to make game
+    this.removeKDigits();
+  }
 
-	// check in the row for existence
-	unUsedInRow(i: number, num: number) {
-		for (let j = 0; j < this.N; j++) {
-			if (this.mat[i][j] === num) {
-				return false;
-			}
-		}
-		return true;
-	}
+  // Fill the diagonal SRN number of SRN x SRN matrices
+  fillDiagonal() {
+    for (let i = 0; i < this.N; i += this.SRN) {
+      // for diagonal box, start coordinates->i==j
+      this.fillBox(i, i);
+    }
+  }
 
-	// check in the row for existence
-	unUsedInCol(j: number, num: number) {
-		for (let i = 0; i < this.N; i++) {
-			if (this.mat[i][j] === num) {
-				return false;
-			}
-		}
-		return true;
-	}
+  // Returns false if given 3 x 3 block contains num.
+  unUsedInBox(rowStart: number, colStart: number, num: number) {
+    for (let i = 0; i < this.SRN; i++) {
+      for (let j = 0; j < this.SRN; j++) {
+        if (this.mat[rowStart + i][colStart + j] === num) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 
-	// A recursive function to fill remaining
-	// matrix
-	fillRemaining(i: number, j: number): boolean {
-		// Check if we have reached the end of the matrix
-		if (i === this.N - 1 && j === this.N) {
-			return true;
-		}
+  // Fill a 3 x 3 matrix.
+  fillBox(row: number, col: number) {
+    let num = 0;
+    for (let i = 0; i < this.SRN; i++) {
+      for (let j = 0; j < this.SRN; j++) {
+        while (true) {
+          num = this.randomGenerator(this.N);
+          if (this.unUsedInBox(row, col, num)) {
+            break;
+          }
+        }
+        this.mat[row + i][col + j] = num;
+        this.answer[row + i][col + j] = num;
+      }
+    }
+  }
 
-		// Move to the next row if we have reached the end of the current row
-		if (j === this.N) {
-			i += 1;
-			j = 0;
-		}
+  // Random generator
+  randomGenerator(num: number) {
+    return Math.floor(Math.random() * num + 1);
+  }
 
+  // Check if safe to put in cell
+  checkIfSafe(i: number, j: number, num: number) {
+    return (
+      this.unUsedInRow(i, num)
+          && this.unUsedInCol(j, num)
+          && this.unUsedInBox(i - (i % this.SRN), j - (j % this.SRN), num)
+    );
+  }
 
-		// Skip cells that are already filled
-		if (this.mat[i][j] !== 0) {
-			return this.fillRemaining(i, j + 1);
-		}
+  // check in the row for existence
+  unUsedInRow(i: number, num: number) {
+    for (let j = 0; j < this.N; j++) {
+      if (this.mat[i][j] === num) {
+        return false;
+      }
+    }
+    return true;
+  }
 
-		// Try filling the current cell with a valid value
-		for (let num = 1; num <= this.N; num++) {
-			if (this.checkIfSafe(i, j, num)) {
-				this.mat[i][j] = num;
-				this.answer[i][j] = num;
-				if (this.fillRemaining(i, j + 1)) {
-					return true;
-				}
-				this.mat[i][j] = 0;
-			}
-		}
+  // check in the row for existence
+  unUsedInCol(j: number, num: number) {
+    for (let i = 0; i < this.N; i++) {
+      if (this.mat[i][j] === num) {
+        return false;
+      }
+    }
+    return true;
+  }
 
-		// No valid value was found, so backtrack
-		return false;
-	}
+  // A recursive function to fill remaining
+  // matrix
+  fillRemaining(i: number, j: number): boolean {
+    // Check if we have reached the end of the matrix
+    if (i === this.N - 1 && j === this.N) {
+      return true;
+    }
 
-	// Remove the K no. of digits to
-	// complete game
-	removeKDigits() {
-		let count = this.K;
+    // Move to the next row if we have reached the end of the current row
+    if (j === this.N) {
+      i += 1;
+      j = 0;
+    }
 
-		while (count !== 0) {
-			// extract coordinates i and j
-			let i = Math.floor(Math.random() * this.N);
-			let j = Math.floor(Math.random() * this.N);
-			if (this.mat[i][j] !== 0) {
-				count--;
-				this.mat[i][j] = 0;
-			}
-		}
+    // Skip cells that are already filled
+    if (this.mat[i][j] !== 0) {
+      return this.fillRemaining(i, j + 1);
+    }
 
-		return;
-	}
+    // Try filling the current cell with a valid value
+    for (let num = 1; num <= this.N; num++) {
+      if (this.checkIfSafe(i, j, num)) {
+        this.mat[i][j] = num;
+        this.answer[i][j] = num;
+        if (this.fillRemaining(i, j + 1)) {
+          return true;
+        }
+        this.mat[i][j] = 0;
+      }
+    }
+
+    // No valid value was found, so backtrack
+    return false;
+  }
+
+  // Remove the K no. of digits to
+  // complete game
+  removeKDigits() {
+    let count = this.K;
+
+    while (count !== 0) {
+      // extract coordinates i and j
+      const i = Math.floor(Math.random() * this.N);
+      const j = Math.floor(Math.random() * this.N);
+      if (this.mat[i][j] !== 0) {
+        count--;
+        this.mat[i][j] = 0;
+      }
+    }
+  }
 }
 
 export {
-	Sudoku,
-	GAME_STATUS
+  Sudoku,
+  GAME_STATUS
 };
