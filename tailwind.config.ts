@@ -14,7 +14,8 @@ const config: Config = {
         'non-editable-cell': '#344861',
         'dark-non-editable-cell': '#2F60C9',
         'editable-cell': '#365db0',
-        'selected-cell': '#bbdefb'
+        'selected-cell': '#bbdefb',
+        'key-hover': '#D9F0FF'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -1,11 +1,14 @@
 'use server';
 
-interface SubmitPayloadType {
-  timer: number,
-  isWin: boolean
+import { createGame, readGames } from '@/db/client';
+import type { Game } from '@/types';
+
+export async function postGame(payload: Game): Promise<Game> {
+  const res = await createGame(payload);
+  return res;
 }
 
-export async function submit(payload: SubmitPayloadType) {
-  const { timer, isWin } = payload;
-  console.log({ timer, isWin }); // temp logging
+export async function getGames(): Promise<Game[]> {
+  const res = await readGames();
+  return res;
 }

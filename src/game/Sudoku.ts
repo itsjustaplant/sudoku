@@ -21,7 +21,7 @@ class Sudoku {
   // Constructor
   constructor() {
     this.N = 9;
-    this.K = 58;
+    this.K = 58; // 58
     this.SRN = 3;
 
     // Initialize all entries as false to indicate

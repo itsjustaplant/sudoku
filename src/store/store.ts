@@ -4,7 +4,7 @@ import { Sudoku, GAME_STATUS } from '@/game/Sudoku';
 type GameStore = {
     board: any,
     answer: number[][],
-    timer: number,
+    time: number,
     selectedRow: number,
     selectedColumn: number,
     isEditable: boolean,
@@ -19,7 +19,7 @@ type GameStore = {
 
 const useGameStore = create<GameStore>((set, get) => ({
   board: [...Array(9)].map((e) => Array(9).fill(' ')),
-  timer: 0,
+  time: 0,
   selectedRow: 0,
   selectedColumn: 0,
   isEditable: false,
@@ -54,7 +54,7 @@ const useGameStore = create<GameStore>((set, get) => ({
     set(() => ({ gameStatus: newStatus, isGameOn: false }));
   },
   setTimer: (t: number) => {
-    set(() => ({ timer: t }));
+    set(() => ({ time: t }));
   }
 }));
 

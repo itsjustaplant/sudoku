@@ -15,7 +15,7 @@ const Key = (props: KeyProps) => {
   };
 
   return (
-    <button onClick={handleClick}>{value}</button>
+    <button className='w-10 h-10 rounded-md transition-all duration-300 hover:bg-key-hover' onClick={handleClick}>{value}</button>
   );
 };
 
