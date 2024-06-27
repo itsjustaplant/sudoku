@@ -2,19 +2,20 @@ import { create } from 'zustand';
 import { Sudoku, GAME_STATUS } from '@/game/Sudoku';
 
 type GameStore = {
-    board: any,
-    answer: number[][],
-    time: number,
-    selectedRow: number,
-    selectedColumn: number,
-    isEditable: boolean,
-    isGameOn: boolean,
-    gameStatus: GAME_STATUS,
-    initBoard: () => void,
-    setSelectedCell: (r: number, c: number, f: boolean) => void,
-    setCellValue: (v: number) => void,
-    setGameStatus: (s: GAME_STATUS) => void,
-    setTimer: (t: number) => void
+  board: any,
+  answer: number[][],
+  time: number,
+  selectedRow: number,
+  selectedColumn: number,
+  isEditable: boolean,
+  isGameOn: boolean,
+  gameStatus: GAME_STATUS,
+  initBoard: () => void,
+  setSelectedCell: (r: number, c: number, f: boolean) => void,
+  setCellValue: (v: number) => void,
+  setGameStatus: (s: GAME_STATUS) => void,
+  setTimer: (t: number) => void,
+  getSelectedCellValue: () => number
 }
 
 const useGameStore = create<GameStore>((set, get) => ({
@@ -55,6 +56,10 @@ const useGameStore = create<GameStore>((set, get) => ({
   },
   setTimer: (t: number) => {
     set(() => ({ time: t }));
+  },
+  getSelectedCellValue: () => {
+    const { board, selectedRow, selectedColumn } = get();
+    return board[selectedRow][selectedColumn]?.value || 0;
   }
 }));
 

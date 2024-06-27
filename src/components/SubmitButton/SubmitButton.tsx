@@ -14,11 +14,11 @@ const SubmitButton = () => {
   const handleSubmit = async () => {
     const sanitizedBoard = board.map((row: CellData[]) => row.map((r) => r.value));
     const isFinished = !sanitizedBoard.some((row: number[]) => row.some((r) => r === 0));
-    const date = new Intl.DateTimeFormat().format(new Date());
 
     if (isFinished) {
       const isWin = JSON.stringify(sanitizedBoard) === JSON.stringify(answer);
       const newGameStatus = isWin ? GAME_STATUS.WIN : GAME_STATUS.LOSS;
+      const date = new Intl.DateTimeFormat().format(new Date());
 
       setGameStatus(newGameStatus);
       postGame({ time, isWin, date });

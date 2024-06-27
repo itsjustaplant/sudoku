@@ -7,7 +7,7 @@ import Row from './Row';
 import { CellData } from '../types';
 
 const Board = () => {
-  const { board, initBoard } = useGameStore();
+  const { board, answer, initBoard } = useGameStore();
 
   useEffect(() => {
     initBoard();
@@ -16,7 +16,7 @@ const Board = () => {
   return (
     <div className="w-[405px] h-[405px]">
       {board.map((row: CellData[], index: number) => (
-        <Row key={index} rowNumber={index} rowData={row} />
+        <Row key={index} rowNumber={index} rowData={row} answerData={answer[index]}/>
       ))}
     </div>
   );

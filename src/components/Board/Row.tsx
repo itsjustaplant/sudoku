@@ -1,13 +1,15 @@
 import Cell from './Cell';
+
 import { CellData } from '../types';
 
 interface RowProps {
   rowNumber: number,
-  rowData: CellData[]
+  rowData: CellData[],
+  answerData: number[]
 }
 
 const Row = (props: RowProps) => {
-  const { rowNumber, rowData } = props;
+  const { rowNumber, rowData, answerData } = props;
 
   return (
     <div className="flex flex-row">
@@ -17,6 +19,7 @@ const Row = (props: RowProps) => {
           rowNumber={rowNumber}
           columnNumber={index}
           value={d.value}
+          answer={answerData[index]}
           isEditable={d.isEditable}
         />
       ))}

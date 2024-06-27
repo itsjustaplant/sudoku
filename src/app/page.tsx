@@ -1,5 +1,5 @@
 import {
-  Board, Keyboard, Timer, SubmitButton
+  Board, Keyboard, Timer
 } from '@/components/';
 
 export default function Home() {
@@ -8,7 +8,6 @@ export default function Home() {
       <Timer />
       <Board />
       <Keyboard />
-      <SubmitButton />
     </main>
   );
 }

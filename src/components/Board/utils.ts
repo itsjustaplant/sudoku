@@ -24,7 +24,31 @@ const getBorderClassnameByColumn = (c: number) => {
   }
 };
 
+const getBackgroundClassname = (isSelected: boolean, isBlushed: boolean) => {
+  switch (true) {
+    case isSelected:
+      return 'bg-key-active';
+    case isBlushed:
+      return 'bg-key-hover';
+    default:
+      return 'bg-white';
+  }
+};
+
+const getColorClassname = (isErrored: boolean, isEditable: boolean) => {
+  switch (true) {
+    case isErrored:
+      return 'text-cell-error';
+    case isEditable:
+      return 'text-editable-cell';
+    default:
+      return 'text-non-editable-cell';
+  }
+};
+
 export {
   getBorderClassnameByColumn,
-  getBorderClassnameByRow
+  getBorderClassnameByRow,
+  getBackgroundClassname,
+  getColorClassname
 };
