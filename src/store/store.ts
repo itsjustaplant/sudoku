@@ -11,12 +11,14 @@ type TGameStore = {
   isEditable: boolean,
   isGameOn: boolean,
   gameStatus: GAME_STATUS,
+  isModalVisible: boolean,
   initBoard: () => void,
   setSelectedCell: (r: number, c: number, f: boolean) => void,
   setCellValue: (v: number) => void,
   setGameStatus: (s: GAME_STATUS) => void,
   setTimer: (t: number) => void,
-  getSelectedCellValue: () => number
+  getSelectedCellValue: () => number,
+  toggleModal: () => void
 }
 
 const useGameStore = create<TGameStore>((set, get) => ({
@@ -28,6 +30,7 @@ const useGameStore = create<TGameStore>((set, get) => ({
   isGameOn: false,
   answer: [...Array(9)].map((e) => Array(9).fill(' ')),
   gameStatus: GAME_STATUS.INITIALIZED,
+  isModalVisible: false,
   initBoard: () => {
     const Game = new Sudoku();
     const tempBoard = Game?.mat?.map((row) => row.map((v) => ({ value: v, isEditable: v === 0 })));
@@ -61,6 +64,12 @@ const useGameStore = create<TGameStore>((set, get) => ({
   getSelectedCellValue: () => {
     const { board, selectedRow, selectedColumn } = get();
     return board[selectedRow][selectedColumn]?.value || 0;
+  },
+  toggleModal: () => {
+    const {
+      isModalVisible
+    } = get();
+    set(() => ({ isModalVisible: !isModalVisible }));
   }
 }));
 

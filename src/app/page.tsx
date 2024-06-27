@@ -1,4 +1,6 @@
-import { Toolbar, Board, Keyboard } from '@/containers';
+import {
+  Toolbar, Board, Keyboard, Dialog
+} from '@/containers';
 
 export default function Home() {
   return (
@@ -6,6 +8,7 @@ export default function Home() {
       <Toolbar />
       <Board />
       <Keyboard />
+      <Dialog />
     </main>
   );
 }

@@ -20,13 +20,12 @@ const config: Config = {
         'selected-cell': '#bbdefb',
         'blue-button-hover': '#D9F0FF',
         'red-button-hover': '#D0D0D0',
-        'cell-selected': '#b3dffc'
+        'cell-selected': '#b3dffc',
+        overlay: 'rgba(0,0,0,0.5)'
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      transformOrigin: {
+        'top-left-1/2-1/2': '-50% -50%'
+      }
     },
   },
   plugins: [],

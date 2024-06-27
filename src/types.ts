@@ -11,5 +11,6 @@ export interface ICellData {
 
 export enum ButtonTheme {
   RED,
-  BLUE
+  BLUE,
+  GHOST
 }

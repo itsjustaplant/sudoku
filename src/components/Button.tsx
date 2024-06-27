@@ -4,16 +4,23 @@ import { ButtonTheme } from '@/types';
 
 import { PropsWithChildren } from 'react';
 
+import { getButtonClassname } from '@/utils';
+
 interface IButtonProps {
-  onClick: () => void,
-  theme: ButtonTheme
+  onClick?: () => void,
+  theme?: ButtonTheme,
+  className?: string
 }
 
 const Button = (props: PropsWithChildren<IButtonProps>) => {
-  const { onClick, children, theme } = props;
+  const {
+    onClick = () => {}, children, theme = ButtonTheme.BLUE, className = ''
+  } = props;
+
+  const buttonBackgroundClass = getButtonClassname(theme);
 
   return (
-    <button className={`flex justify-center items-center w-10 h-10 rounded-md transition-all duration-300 ${theme === ButtonTheme.BLUE ? 'hover:bg-blue-button-hover' : 'hover:bg-red-button-hover'} text-cell-editable`} onClick={() => onClick()}>{children}</button>
+    <button className={`flex justify-center items-center w-10 h-10 rounded-md transition-all duration-300 ${buttonBackgroundClass} ${className}`} onClick={() => onClick()}>{children}</button>
   );
 };
 

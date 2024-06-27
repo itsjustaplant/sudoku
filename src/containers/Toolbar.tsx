@@ -10,7 +10,9 @@ import { getFormattedDate } from '@/utils';
 import { Flag } from '@/icons';
 
 const Toolbar = () => {
-  const { isGameOn, time, setTimer } = useGameStore();
+  const {
+    isGameOn, time, setTimer, toggleModal
+  } = useGameStore();
 
   useEffect(() => {
     let interval: any = null;
@@ -24,7 +26,7 @@ const Toolbar = () => {
   }, [isGameOn, time, setTimer]);
 
   const handleReset = () => {
-    // TODO: add reset logic here
+    toggleModal();
   };
 
   return (
