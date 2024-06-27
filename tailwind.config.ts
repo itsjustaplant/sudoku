@@ -18,8 +18,8 @@ const config: Config = {
         'cell-dark-non-editable': '#2F60C9',
         'cell-editable': '#365db0',
         'selected-cell': '#bbdefb',
-        'blue-key-hover': '#D9F0FF',
-        'red-key-hover': '#D0D0D0',
+        'blue-button-hover': '#D9F0FF',
+        'red-button-hover': '#D0D0D0',
         'cell-selected': '#b3dffc'
       },
       backgroundImage: {

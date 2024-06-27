@@ -1,10 +1,10 @@
 'use client';
 
-import { KeyTheme } from '@/types';
+import { ButtonTheme } from '@/types';
 
 import useGameStore from '@/store/store';
 
-import { Key } from '@/components';
+import { Button } from '@/components';
 
 const Keyboard = () => {
   const keys = Array.from(Array(9));
@@ -17,9 +17,9 @@ const Keyboard = () => {
   return (
     <div className="w-full flex flex-row justify-around text-3xl font-medium">
       {keys.map((_, i) => (
-        <Key onClick={() => handleClick(i + 1)} key={i} theme={KeyTheme.BLUE}>
+        <Button onClick={() => handleClick(i + 1)} key={i} theme={ButtonTheme.BLUE}>
           <span>{i + 1}</span>
-        </Key>
+        </Button>
       ))}
     </div>
   );

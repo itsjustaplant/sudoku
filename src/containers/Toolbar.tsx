@@ -1,11 +1,11 @@
 'use client';
 
-import { KeyTheme } from '@/types';
+import { ButtonTheme } from '@/types';
 
 import { useEffect } from 'react';
 
 import useGameStore from '@/store/store';
-import { Key } from '@/components';
+import { Button } from '@/components';
 import { getFormattedDate } from '@/utils';
 import { Flag } from '@/icons';
 
@@ -30,9 +30,9 @@ const Toolbar = () => {
   return (
     <div className="flex justify-between">
       <span>
-        <Key onClick={handleReset} theme={KeyTheme.RED}>
+        <Button onClick={handleReset} theme={ButtonTheme.RED}>
           <Flag />
-        </Key>
+        </Button>
       </span>
       <span className="tabular-nums text-3xl">{getFormattedDate(time)}</span>
     </div>

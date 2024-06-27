@@ -9,7 +9,7 @@ export interface ICellData {
   isEditable: boolean
 }
 
-export enum KeyTheme {
+export enum ButtonTheme {
   RED,
   BLUE
 }
