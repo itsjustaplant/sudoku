@@ -1,10 +1,11 @@
 'use client';
 
+import { ICellData } from '@/types';
+
 import { useEffect } from 'react';
 
 import useGameStore from '@/store/store';
 import Row from './Row';
-import { CellData } from '../types';
 
 const Board = () => {
   const { board, answer, initBoard } = useGameStore();
@@ -15,7 +16,7 @@ const Board = () => {
 
   return (
     <div className="w-[405px] h-[405px]">
-      {board.map((row: CellData[], index: number) => (
+      {board.map((row: ICellData[], index: number) => (
         <Row key={index} rowNumber={index} rowData={row} answerData={answer[index]}/>
       ))}
     </div>

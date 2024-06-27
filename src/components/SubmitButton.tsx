@@ -1,10 +1,10 @@
 'use client';
 
+import { ICellData } from '@/types';
+
 import useGameStore from '@/store/store';
 import { postGame } from '@/app/actions';
 import { GAME_STATUS } from '@/game/Sudoku';
-
-import { CellData } from '../types';
 
 const SubmitButton = () => {
   const {
@@ -12,7 +12,7 @@ const SubmitButton = () => {
   } = useGameStore();
 
   const handleSubmit = async () => {
-    const sanitizedBoard = board.map((row: CellData[]) => row.map((r) => r.value));
+    const sanitizedBoard = board.map((row: ICellData[]) => row.map((r) => r.value));
     const isFinished = !sanitizedBoard.some((row: number[]) => row.some((r) => r === 0));
 
     if (isFinished) {

@@ -4,7 +4,9 @@ const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/containers/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/utils/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -16,7 +18,8 @@ const config: Config = {
         'cell-dark-non-editable': '#2F60C9',
         'cell-editable': '#365db0',
         'selected-cell': '#bbdefb',
-        'key-hover': '#D9F0FF',
+        'blue-key-hover': '#D9F0FF',
+        'red-key-hover': '#D0D0D0',
         'cell-selected': '#b3dffc'
       },
       backgroundImage: {

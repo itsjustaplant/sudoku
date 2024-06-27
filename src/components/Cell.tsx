@@ -4,7 +4,7 @@ import {
   getBorderClassnameByRow,
   getBackgroundClassname,
   getColorClassname,
-} from './utils';
+} from '@/utils/';
 
 interface CellProps {
   rowNumber: number;

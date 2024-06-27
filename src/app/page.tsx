@@ -1,11 +1,9 @@
-import {
-  Board, Keyboard, Timer
-} from '@/components/';
+import { Toolbar, Board, Keyboard } from '@/containers';
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
-      <Timer />
+    <main className="flex flex-col gap-2">
+      <Toolbar />
       <Board />
       <Keyboard />
     </main>

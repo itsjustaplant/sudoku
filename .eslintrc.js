@@ -10,8 +10,11 @@ module.exports = {
     'no-shadow': 'off',
     'no-plusplus': 'off',
     'class-methods-use-this': 'off',
-    'no-unused-vars': ['error', { args: 'none' }],
+    'no-unused-vars': 'off',
     'import/extensions': 'off',
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+  },
+  globals: {
+    JSX: true
   }
 };

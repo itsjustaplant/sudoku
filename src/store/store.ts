@@ -1,7 +1,8 @@
 import { create } from 'zustand';
+
 import { Sudoku, GAME_STATUS } from '@/game/Sudoku';
 
-type GameStore = {
+type TGameStore = {
   board: any,
   answer: number[][],
   time: number,
@@ -18,7 +19,7 @@ type GameStore = {
   getSelectedCellValue: () => number
 }
 
-const useGameStore = create<GameStore>((set, get) => ({
+const useGameStore = create<TGameStore>((set, get) => ({
   board: [...Array(9)].map((e) => Array(9).fill(' ')),
   time: 0,
   selectedRow: 0,

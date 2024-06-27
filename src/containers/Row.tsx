@@ -1,14 +1,14 @@
-import Cell from './Cell';
+import { ICellData } from '@/types';
 
-import { CellData } from '../types';
+import { Cell } from '@/components';
 
-interface RowProps {
+interface IRowProps {
   rowNumber: number,
-  rowData: CellData[],
+  rowData: ICellData[],
   answerData: number[]
 }
 
-const Row = (props: RowProps) => {
+const Row = (props: IRowProps) => {
   const { rowNumber, rowData, answerData } = props;
 
   return (

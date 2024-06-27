@@ -1,11 +1,11 @@
-import Board from './Board/Board';
-import Keyboard from './Keyboard/Keyboard';
-import Timer from './Timer/Timer';
-import SubmitButton from './SubmitButton/SubmitButton';
+import Key from './Key';
+import Cell from './Cell';
+
+// TODO: remove all db bindings
+import SubmitButton from './SubmitButton';
 
 export {
-  Board,
-  Keyboard,
-  Timer,
-  SubmitButton
+  SubmitButton,
+  Key,
+  Cell
 };
