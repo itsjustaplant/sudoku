@@ -39,7 +39,8 @@ const useGameStore = create<TGameStore>((set, get) => ({
       answer: Game?.answer,
       isEditable: !Game.mat[0][0],
       isGameOn: false,
-      gameStatus: GAME_STATUS.INITIALIZED
+      gameStatus: GAME_STATUS.INITIALIZED,
+      time: 0
     }));
   },
   setSelectedCell: (r: number, c: number, f: boolean) => {
