@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'dark-border': '#344861',
-        'light-border': '#bfc6d4',
-        'non-editable-cell': '#344861',
+        'border-dark': '#344861',
+        'border-light': '#bfc6d4',
+        'cell-non-editable': '#344861',
         'cell-error': '#ed6e67',
-        'dark-non-editable-cell': '#2F60C9',
-        'editable-cell': '#365db0',
+        'cell-dark-non-editable': '#2F60C9',
+        'cell-editable': '#365db0',
         'selected-cell': '#bbdefb',
         'key-hover': '#D9F0FF',
-        'key-active': '#b3dffc'
+        'cell-selected': '#b3dffc'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

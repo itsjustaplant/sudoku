@@ -1,9 +1,9 @@
 const getBorderClassnameByRow = (r: number) => {
   switch (true) {
     case r === 0:
-      return 'border-t-2 border-t-dark-border';
+      return 'border-t-2 border-t-border-dark';
     case (r + 1) % 3 === 0 || r === 8:
-      return 'border-t-[1px] border-b-2 border-b-dark-border';
+      return 'border-t-[1px] border-b-2 border-b-border-dark';
     case r % 3 === 0:
       return '';
     default:
@@ -14,9 +14,9 @@ const getBorderClassnameByRow = (r: number) => {
 const getBorderClassnameByColumn = (c: number) => {
   switch (true) {
     case c === 0:
-      return 'border-l-2 border-l-dark-border';
+      return 'border-l-2 border-l-border-dark';
     case (c + 1) % 3 === 0 || c === 8:
-      return 'border-l-[1px] border-r-dark-border border-r-2';
+      return 'border-l-[1px] border-r-border-dark border-r-2';
     case c % 3 === 0:
       return '';
     default:
@@ -27,7 +27,7 @@ const getBorderClassnameByColumn = (c: number) => {
 const getBackgroundClassname = (isSelected: boolean, isBlushed: boolean) => {
   switch (true) {
     case isSelected:
-      return 'bg-key-active';
+      return 'bg-cell-selected';
     case isBlushed:
       return 'bg-key-hover';
     default:
@@ -40,9 +40,9 @@ const getColorClassname = (isErrored: boolean, isEditable: boolean) => {
     case isErrored:
       return 'text-cell-error';
     case isEditable:
-      return 'text-editable-cell';
+      return 'text-cell-editable';
     default:
-      return 'text-non-editable-cell';
+      return 'text-cell-non-editable';
   }
 };
 

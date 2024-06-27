@@ -42,7 +42,7 @@ const Cell = (props: CellProps) => {
   return (
     <div
       onClick={handleClick}
-      className={`text-3xl leading-[45px] text-center h-[45px] w-[45px] border-light-border border-solid cursor-pointer transition-all duration-300 ${cellTextClassname} ${rowClassname} ${columnClassname} ${backgroundClassname}`}
+      className={`text-3xl leading-[45px] text-center h-[45px] w-[45px] border-border-light border-solid cursor-pointer transition-all duration-300 ${cellTextClassname} ${rowClassname} ${columnClassname} ${backgroundClassname}`}
     >
       {value === 0 ? ' ' : value}
     </div>
