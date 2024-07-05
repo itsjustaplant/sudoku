@@ -4,7 +4,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-2">
+    <main className="flex flex-col gap-1">
       <Toolbar />
       <Board />
       <Keyboard />
