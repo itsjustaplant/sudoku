@@ -38,7 +38,7 @@ const Toolbar = () => {
           <Flag />
         </Button>
       </span>
-      <span className="tabular-nums text-3xl">{getFormattedDate(time)}</span>
+      <span className="tabular-nums text-3xl">{getFormattedDate(time || 0)}</span>
     </div>
   );
 };

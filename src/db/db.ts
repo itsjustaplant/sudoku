@@ -11,7 +11,7 @@ const db = new Dexie('GameDB') as Dexie & {
 
 // Schema declaration:
 db.version(1).stores({
-  game: '++id, board, answer' // primary key "id" (for the runtime!)
+  game: '++id, board, answer, time' // primary key "id" (for the runtime!)
 });
 
 export type { TGameDB };

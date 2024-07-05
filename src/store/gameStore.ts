@@ -18,15 +18,16 @@ const useGameStore = create<TGameStore>((set, get) => ({
   initBoard: async (reset: boolean = false) => {
     const lastGame = await getGame();
 
+    // visit again
     if (!reset && lastGame) {
-      const { board, answer } = lastGame;
+      const { board, answer, time } = lastGame;
       set(() => ({
         board,
         answer,
+        time,
         isEditable: board && board[0][0].isEditable,
         isGameOn: false,
         gameStatus: GAME_STATUS.INITIALIZED,
-        time: 0
       }));
     } else {
       const game = new Sudoku();
@@ -42,10 +43,10 @@ const useGameStore = create<TGameStore>((set, get) => ({
         time: 0
       }));
 
-      if (reset) {
-        updateGame({ board: tempBoard, answer: game?.answer });
-      } else {
-        addGame({ board: tempBoard, answer: game?.answer });
+      if (reset) { // reset
+        updateGame({ board: tempBoard, answer: game?.answer, time: lastGame?.time || 0 });
+      } else { // first time
+        addGame({ board: tempBoard, answer: game?.answer, time: 0 });
       }
     }
   },
@@ -54,13 +55,13 @@ const useGameStore = create<TGameStore>((set, get) => ({
   },
   setCellValue: (v: number) => {
     const {
-      board, selectedRow, selectedColumn, isEditable, answer
+      board, selectedRow, selectedColumn, isEditable, answer, time
     } = get();
     if (isEditable) {
       const tempBoard = structuredClone(board);
       tempBoard[selectedRow][selectedColumn].value = v;
       set(() => ({ board: tempBoard, isGameOn: true }));
-      updateGame({ board: tempBoard, answer });
+      updateGame({ board: tempBoard, answer, time });
     }
   },
   setGameStatus: (newStatus: GAME_STATUS) => {

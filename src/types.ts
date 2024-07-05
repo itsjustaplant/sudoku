@@ -32,7 +32,7 @@ export type TGameStore = {
   getSelectedCellValue: () => number;
 };
 
-export type TGameDB = Partial<Pick<TGameStore, 'board' | 'answer'>> & {
+export type TGameDB = Partial<Pick<TGameStore, 'board' | 'answer' | 'time'>> & {
   id?: string | number
 };
 
