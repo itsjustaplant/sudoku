@@ -2,8 +2,7 @@
 
 import { ButtonTheme } from '@/types';
 
-import useGameStore from '@/store/store';
-
+import { useGameStore } from '@/store';
 import { Button } from '@/components';
 
 const Keyboard = () => {

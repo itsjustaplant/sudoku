@@ -1,10 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
-enum GAME_STATUS {
-    INITIALIZED,
-    WIN,
-    LOSS
-  }
 
 // JS program to implement the approach
 class Sudoku {
@@ -175,7 +170,4 @@ class Sudoku {
   }
 }
 
-export {
-  Sudoku,
-  GAME_STATUS
-};
+export default Sudoku;

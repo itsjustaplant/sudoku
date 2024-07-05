@@ -1,4 +1,4 @@
-import useGameStore from '@/store/store';
+import { useGameStore } from '@/store';
 import {
   getBorderClassnameByColumn,
   getBorderClassnameByRow,

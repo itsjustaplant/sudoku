@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
+    "dexie": "^4.0.7",
+    "dexie-react-hooks": "^1.1.7",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",

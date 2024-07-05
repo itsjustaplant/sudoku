@@ -4,18 +4,19 @@ import { ButtonTheme } from '@/types';
 
 import React from 'react';
 
-import useGameStore from '@/store/store';
+import { useGameStore, useModalStore } from '@/store';
 import { Button } from '@/components';
 
 const Dialog = () => {
-  const { isModalVisible, toggleModal, initBoard } = useGameStore();
+  const { initBoard } = useGameStore();
+  const { isModalVisible, toggleModal } = useModalStore();
 
   const handleClose = () => {
     toggleModal();
   };
 
   const handleConfirm = () => {
-    initBoard();
+    initBoard(true);
     handleClose();
   };
 
