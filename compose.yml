@@ -4,18 +4,6 @@ networks:
     external: true
 
 services:
-  db:
-    image: postgres
-    restart: always
-    ports:
-      - "3003:5432"
-    volumes:
-      - ./db:/var/lib/postgresql/data"
-    environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=games
-    networks:
-      - proxiable_network
   web:
     build:
       context: /www/sudoku
